@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel</title>
+    <script>
+      var passengers = [
+        {name:"Jane Doloop",  paid:true, ticket: "premium"},
+        {name:"Dr.Evel",      paid:true, ticket: "firstclass"},
+        {name:"Sue Property", paid:false, ticket: "firstclass"},
+        {name:"John Funcall", paid:true, ticket: "coach"}
+      ];
+
+//processPassengers takes two arguments, one is an array and the other a function
+      function processPassengers(passengers, testFunction){
+        //the for loop iterates through the passengers array
+        for(var i = 0; i < passengers.length; i++){
+          //testFunction is a function that itearates through
+          //the array and looks for a condition(if they paid and if they are on the nfl)
+          if(testFunction(passengers[i])){
+//if any of the conditions fail, return false and the plane doesnt take off
+            return false;
+          }
+        }
+        //if all conditions pass, then fly
+        return true;
+      }
+// this is  a function for NFL the only person on it is dr.evel. This returns true
+//if it is Dr.Evel and false if it is any other passenger
+      function checkNoFlyList(passenger){
+        return(passenger.name === "Dr.Evel");
+      }
+
+// this function checks to see if the passenger has paid and returns false if they  havent
+      function checkNotPaid(passenger){
+
+        return(!passengers.paid)
+      }
+
+
+
+
+      // var allCanFly = processPassengers(passengers, checkNoFlyList);
+      //   // if the NFL returns a false then that means there is someone on the NFL and we cant take off and we display the message
+      //   if(!allCanFly){
+      //     console.log("The plane can't take off: We have a passenger on the NFL");
+      //   }
+
+
+
+//this iterates through the passengers and returns true if everyone has
+// paid and logs the message onto the console if they havent
+
+
+
+      // var allPaid = processPassengers(passengers, checkNotPaid)
+      //   if(!allPaid){
+      //     console.log("The plane can't take off: Not everyone has paid");
+      //   }
+
+
+        // function printPassenger(passenger){
+        //   var message = passenger.name;
+        //   if(passenger.paid === true){
+        //     message = message + " has paid";
+        //   }else{
+        //     message = message + " has not paid";
+        //   }
+        //   console.log(message);
+        //   return false;
+        // }
+        //
+        // processPassengers(passengers, printPassenger);
+
+//this is the function for getting a drink order
+        function createDrinkOrder(passenger){
+          var orderFunction;
+          if(passenger.ticket === "firstclass"){
+            orderFunction = function(){
+              alert("Would you like cocktail or wine?");
+            };
+          }else if(passenger.ticket === "premium"){
+            orderFunction = function(){
+              alert("Would you like wine, water or cola");
+            };
+          }else{
+            orderFunction = function(){
+              alert("Your choice is cola or water.");
+            };
+          }
+          return orderFunction;
+        }
+//returning a function from a function
+        function serveCustomer(passenger){
+          var getDrinkOrderFunction = createDrinkOrder(passenger);
+
+          getDrinkOrderFunction();
+          //get dinner order
+          getDrinkOrderFunction();
+
+          getDrinkOrderFunction();
+          getDinnerOrderFunction();
+
+          //movie time
+          getDrinkOrderFunction();
+          //pick up trash
+        }
+
+
+        function servePassenger(passengers){
+          for(var i = 0; i < passengers.length; i++ ){
+            serveCustomer(passengers[i]);
+          }
+
+        }
+
+        servePassenger(passengers);
+
+
+
+
+
+        var getDinnerOrderFunction = function(passenger){
+          if(passenger.ticket === "firstclass"){
+            alert("Which would you like chicken or pasta?");
+          }else if(passenger.ticket === "premium"){
+            alert("Would you like a snake box or a cheese plate");
+          }else{
+            alert("Peanuts or pretzel");
+          };
+          return getDinnerOrderFunction;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
